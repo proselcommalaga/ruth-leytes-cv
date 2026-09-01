@@ -305,10 +305,32 @@
     .metric-cell small { display: block; margin-top: .65rem; font-family: Consolas, monospace; font-size: .67rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .metric-cell p { margin: .65rem 0 0; color: inherit; font-size: .85rem; line-height: 1.4; }
     .metric-cell--timeline strong { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
-    .timeline-dots { display: grid; grid-template-columns: repeat(3, 1fr); margin: .75rem 0 .45rem; }
-    .timeline-dots span { position: relative; padding-top: 1rem; text-align: center; font-family: Consolas, monospace; font-size: .61rem; color: var(--ink-soft); }
-    .timeline-dots span::before { content: ""; position: absolute; left: 50%; top: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--deep); transform: translateX(-50%); }
-    .timeline-dots span:last-child::before { background: var(--coral); }
+    .timeline-dots { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); margin: .75rem 0 .45rem; }
+    .timeline-dots::before,
+    .timeline-dots::after { content: ""; position: absolute; left: 16.666%; right: 16.666%; top: 3px; height: 2px; border-radius: 999px; }
+    .timeline-dots::before { background: var(--line); }
+    .timeline-dots::after {
+      background: linear-gradient(90deg, var(--deep), var(--gold) 52%, var(--coral));
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: timeline-flow 2.1s .55s cubic-bezier(.2,.75,.2,1) both;
+    }
+    .timeline-dots span { position: relative; z-index: 1; padding-top: 1rem; text-align: center; font-family: Consolas, monospace; font-size: .61rem; color: var(--ink-soft); }
+    .timeline-dots span::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--deep);
+      box-shadow: 0 0 0 3px var(--surface);
+      transform: translateX(-50%) scale(.72);
+      animation: timeline-mark .38s .65s ease-out both;
+    }
+    .timeline-dots span:nth-child(2)::before { background: var(--gold); animation-delay: 1.25s; }
+    .timeline-dots span:last-child::before { background: var(--coral); animation-delay: 1.9s; }
     .metrics-note { margin: .65rem 0 0; color: var(--ink-soft); font-size: .82rem; }
 
     .trajectory { background: var(--deep); color: var(--white); }
@@ -384,6 +406,14 @@
     @keyframes panel-sheen {
       0%, 72%, 100% { transform: translateX(-110%); }
       86% { transform: translateX(110%); }
+    }
+    @keyframes timeline-flow {
+      to { transform: scaleX(1); }
+    }
+    @keyframes timeline-mark {
+      0% { opacity: .4; transform: translateX(-50%) scale(.72); }
+      70% { box-shadow: 0 0 0 6px color-mix(in srgb, currentColor 12%, transparent); }
+      100% { opacity: 1; transform: translateX(-50%) scale(1); box-shadow: 0 0 0 3px var(--surface); }
     }
 
     @media (hover: hover) {
@@ -483,7 +513,7 @@
           <p class="eyebrow">Trayectoria profesional</p>
           <h1 id="nombre">Ruth Leytes</h1>
           <p class="role-line">Recruiter IT · Talent Sourcing internacional · Selección End-to-End</p>
-          <p class="hero-copy">Especialista en adquisición de talento tecnológico con experiencia en sourcing estratégico, entrevistas por competencias y gestión integral de procesos para clientes internacionales. Conecta búsqueda, evaluación, comunicación y seguimiento para construir pipelines técnicos claros y ofrecer una experiencia cuidada a cada candidatura.</p>
+          <p class="hero-copy">Especialista en adquisición de talento tecnológico con experiencia en sourcing estratégico, entrevistas por competencias y gestión integral de procesos para clientes internacionales. Conecto búsqueda, evaluación, comunicación y seguimiento para construir pipelines técnicos claros y ofrecer una experiencia cuidada a cada candidatura.</p>
           <p class="contact-note">Uruguay · experiencia remota con Estados Unidos, España y LATAM · inglés B1 con B2 en curso</p>
         </div>
         <aside class="proposal-card" aria-label="Panal del sistema profesional de Ruth: el talento IT conecta sourcing, pipeline, entrevistas, comunicación en inglés, onboarding y coordinación internacional">
@@ -584,7 +614,7 @@
 <strong>30</strong>
 <small>Pasantes coordinados</small>
 </div>
-<p>Liderazgo remoto en Gaotek; además trabajó en un equipo de 15 recruiters en CJ.</p>
+<p>Liderazgo remoto en Gaotek; además trabajé en un equipo de 15 recruiters en CJ.</p>
 </article>
           <article class="metric-cell metric-cell--timeline">
             <strong>Línea temporal</strong>
@@ -604,7 +634,7 @@
       <div class="shell">
         <div class="section-head">
           <h2 id="trayectoria-title">Trayectoria</h2>
-          <p>La trayectoria presenta acciones y resultados de Ruth respaldados por el documento fuente. Cada bloque los separa con claridad de la referencia profesional actual del rol.</p>
+          <p>En esta trayectoria resumo acciones y resultados respaldados por el documento fuente. Cada bloque los separa con claridad de la referencia profesional actual del rol.</p>
         </div>
         <div class="timeline">
           <article class="job">
@@ -614,11 +644,11 @@
               <p class="company">Strider · Remoto · Estados Unidos</p>
             </div>
             <ul>
-              <li>Buscó profesionales de tecnología para procesos de selección internacionales mediante estrategias de sourcing dirigidas.</li>
-              <li>Construyó búsquedas específicas con LinkedIn Recruiter, Boolean Search y otros canales de captación.</li>
-              <li>Creó y mantuvo pipelines de candidaturas para Software Engineering, Data, Cloud &amp; DevOps, QA/Testing y Ciberseguridad.</li>
-              <li>Preseleccionó perfiles según experiencia técnica y nivel de comunicación en inglés.</li>
-              <li>Colaboró de forma remota con equipos y stakeholders internacionales durante el proceso de selección.</li>
+              <li>Busqué profesionales de tecnología para procesos de selección internacionales mediante estrategias de sourcing dirigidas.</li>
+              <li>Construí búsquedas específicas con LinkedIn Recruiter, Boolean Search y otros canales de captación.</li>
+              <li>Creé y mantuve pipelines de candidaturas para Software Engineering, Data, Cloud &amp; DevOps, QA/Testing y Ciberseguridad.</li>
+              <li>Preseleccioné perfiles según experiencia técnica y nivel de comunicación en inglés.</li>
+              <li>Colaboré de forma remota con equipos y stakeholders internacionales durante el proceso de selección.</li>
             </ul>
             <div class="level-box">
               <h4>Estándar profesional del rol · referencia actual</h4>
@@ -642,12 +672,12 @@
               <p class="company">CJ Recruitment · Remoto · Argentina</p>
             </div>
             <ul>
-              <li>Gestionó procesos de selección IT End-to-End, desde la búsqueda hasta el seguimiento de candidaturas.</li>
-              <li>Localizó perfiles técnicos con LinkedIn Recruiter, Boolean Search, publicaciones de vacantes y sourcing dirigido.</li>
-              <li>Realizó entrevistas por competencias y evaluó la experiencia técnica y el nivel de inglés conversacional.</li>
-              <li>Coordinó los procesos con clientes de Estados Unidos y España y acompañó a cada candidatura durante su avance.</li>
-              <li>Alcanzó entre 3 y 4 contrataciones mensuales para posiciones IT.</li>
-              <li>Formó parte de un equipo internacional de 15 recruiters.</li>
+              <li>Gestioné procesos de selección IT End-to-End, desde la búsqueda hasta el seguimiento de candidaturas.</li>
+              <li>Localicé perfiles técnicos con LinkedIn Recruiter, Boolean Search, publicaciones de vacantes y sourcing dirigido.</li>
+              <li>Realicé entrevistas por competencias y evalué la experiencia técnica y el nivel de inglés conversacional.</li>
+              <li>Coordiné los procesos con clientes de Estados Unidos y España y acompañé a cada candidatura durante su avance.</li>
+              <li>Alcancé entre 3 y 4 contrataciones mensuales para posiciones IT.</li>
+              <li>Formé parte de un equipo internacional de 15 recruiters.</li>
             </ul>
             <div class="level-box">
               <h4>Estándar profesional del rol · referencia actual</h4>
@@ -671,11 +701,11 @@
               <p class="company">Gaotek Inc · Remoto · Estados Unidos</p>
             </div>
             <ul>
-              <li>Reclutó y seleccionó profesionales de tecnología para un entorno remoto internacional.</li>
-              <li>Coordinó el onboarding y la capacitación de nuevas incorporaciones.</li>
-              <li>Monitoreó desempeño y asistencia para sostener el seguimiento del equipo.</li>
-              <li>Lideró un equipo remoto de 30 pasantes, alineando procesos y objetivos.</li>
-              <li>Implementó estrategias de atracción y retención de talento.</li>
+              <li>Recluté y seleccioné profesionales de tecnología para un entorno remoto internacional.</li>
+              <li>Coordiné el onboarding y la capacitación de nuevas incorporaciones.</li>
+              <li>Monitoreé desempeño y asistencia para sostener el seguimiento del equipo.</li>
+              <li>Lideré un equipo remoto de 30 pasantes, alineando procesos y objetivos.</li>
+              <li>Implementé estrategias de atracción y retención de talento.</li>
             </ul>
             <div class="level-box">
               <h4>Estándar profesional del rol · referencia actual</h4>
@@ -699,10 +729,10 @@
               <p class="company">Recruitingskull · Remoto · Argentina</p>
             </div>
             <ul>
-              <li>Buscó candidaturas IT mediante LinkedIn Recruiter y Boolean Search.</li>
-              <li>Preseleccionó perfiles de acuerdo con los criterios técnicos de las búsquedas.</li>
-              <li>Organizó y mantuvo pipelines para dar continuidad al proceso de sourcing.</li>
-              <li>Desarrolló networking dentro del ecosistema tecnológico para ampliar las fuentes de talento.</li>
+              <li>Busqué candidaturas IT mediante LinkedIn Recruiter y Boolean Search.</li>
+              <li>Preseleccioné perfiles de acuerdo con los criterios técnicos de las búsquedas.</li>
+              <li>Organicé y mantuve pipelines para dar continuidad al proceso de sourcing.</li>
+              <li>Desarrollé networking dentro del ecosistema tecnológico para ampliar las fuentes de talento.</li>
             </ul>
             <div class="level-box">
               <h4>Estándar profesional del rol · referencia actual</h4>
@@ -726,7 +756,7 @@
       <div class="shell">
         <div class="section-head">
           <h2 id="capacidades-title">Capacidades</h2>
-          <p>Tres núcleos que resumen la propuesta profesional demostrable de Ruth en reclutamiento tecnológico.</p>
+          <p>Tres núcleos que resumen mi propuesta profesional demostrable en reclutamiento tecnológico.</p>
         </div>
         <div class="capability-grid">
           <article class="capability">

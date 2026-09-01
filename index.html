@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4f0e7">
+  <meta name="description" content="Perfil profesional de Ruth Leytes: reclutamiento IT, talent sourcing internacional, selección End-to-End y evaluación de talento tecnológico.">
+  <title>Ruth Leytes · Reclutamiento IT y Talent Sourcing</title>
+  <style>
+    :root {
+      --paper: #f4f0e7;
+      --surface: #fffdf8;
+      --ink: #123e3b;
+      --ink-soft: #60706d;
+      --deep: #123e3b;
+      --deep-2: #1d504c;
+      --line: #d6d1c6;
+      --coral: #d95740;
+      --gold: #e4b84e;
+      --mint: #d9e2d8;
+      --white: #fffdf8;
+      --shadow: 0 24px 54px rgba(21, 57, 55, .13);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    [data-theme="dark"] {
+      --paper: #0f2625;
+      --surface: #173432;
+      --ink: #f7f2e7;
+      --ink-soft: #c5d0cc;
+      --deep: #071f1e;
+      --deep-2: #163b39;
+      --line: #42615d;
+      --mint: #244542;
+      --shadow: 0 24px 54px rgba(0, 0, 0, .28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 8% 4%, color-mix(in srgb, var(--gold) 10%, transparent), transparent 28rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+    button, a { font: inherit; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      left: 1rem;
+      top: .75rem;
+      padding: .7rem 1rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #172d2b;
+      transform: translateY(-180%);
+      transition: transform .2s ease;
+      font-weight: 800;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .shell { width: min(var(--max), calc(100% - 2rem)); margin-inline: auto; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 91%, transparent);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 28px rgba(18, 62, 59, .035);
+    }
+    .header-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+    .monogram {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      aspect-ratio: 1;
+      border-radius: 13px;
+      background: var(--deep);
+      color: var(--white);
+      font-size: .85rem;
+      letter-spacing: .04em;
+      box-shadow: 0 8px 18px rgba(18, 62, 59, .16);
+    }
+    .nav-wrap, .main-nav { display: flex; align-items: center; gap: .35rem; }
+    .main-nav a {
+      padding: .55rem .7rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 750;
+      font-size: .92rem;
+    }
+    .main-nav a { transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .main-nav a:hover { background: var(--mint); transform: translateY(-1px); }
+    .theme-toggle {
+      position: relative;
+      width: 54px;
+      min-width: 54px;
+      height: 32px;
+      min-height: 32px;
+      padding: 2px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent);
+    }
+    .theme-toggle::after { content: "☀"; position: absolute; right: 6px; top: 4px; font-size: .9rem; line-height: 1; }
+    .theme-toggle[aria-pressed="true"]::after { content: "☾"; left: 6px; right: auto; color: var(--white); }
+    .toggle-knob { display: block; width: 26px; height: 26px; border-radius: 50%; background: var(--deep); transition: transform .22s ease, background .22s ease; }
+    .theme-toggle[aria-pressed="true"] .toggle-knob { transform: translateX(22px); background: var(--gold); }
+    .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; border: 0 !important; }
+
+    .hero {
+      padding: clamp(2.1rem, 3.35vw, 2.9rem) 0 clamp(2.5rem, 3.8vw, 3.2rem);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 42%, transparent), transparent 76%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.6rem, 3.6vw, 3.4rem); align-items: center; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 0 0 1rem;
+      color: var(--coral);
+      font-size: .79rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 3px; background: currentColor; }
+    h1, h2, h3, h4, p { overflow-wrap: anywhere; }
+    h1, h2, h3 { font-family: Bahnschrift, "Arial Narrow", Arial, sans-serif; }
+    h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-family: Bahnschrift, "Arial Narrow", Arial, sans-serif;
+      font-size: clamp(3rem, 4.4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+    .role-line {
+      max-width: 720px;
+      margin: .75rem 0 1.2rem;
+      font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .hero-copy { max-width: 65ch; color: var(--ink-soft); font-size: 1.06rem; line-height: 1.58; }
+    .contact-note { margin: 1.55rem 0 0; color: var(--ink-soft); font-size: .92rem; }
+    .proposal-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 476px;
+      padding: clamp(1.2rem, 2.6vw, 1.75rem);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 43%, rgba(228, 184, 78, .1), transparent 32%),
+        linear-gradient(145deg, var(--deep-2), var(--deep) 58%);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .proposal-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.045) 47%, transparent 72%);
+      transform: translateX(-110%);
+      animation: panel-sheen 7s 1.4s ease-in-out infinite;
+    }
+    .panel-kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--gold);
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .panel-kicker span:last-child { color: #9fb8b2; }
+    .honeycomb {
+      position: relative;
+      width: min(100%, 430px);
+      aspect-ratio: 1.13;
+      margin: .45rem auto 0;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,.16));
+    }
+    .hex {
+      --hex-border: #98bcb3;
+      --hex-fill: #164440;
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 35%;
+      aspect-ratio: 1.1547;
+      display: grid;
+      place-items: center;
+      padding: 1rem .55rem;
+      background: var(--hex-border);
+      clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+      transition: transform .24s ease, filter .24s ease;
+      animation: hex-arrive .55s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .hex:nth-child(2) { animation-delay: .07s; }
+    .hex:nth-child(3) { animation-delay: .14s; }
+    .hex:nth-child(4) { animation-delay: .21s; }
+    .hex:nth-child(5) { animation-delay: .28s; }
+    .hex:nth-child(6) { animation-delay: .35s; }
+    .hex:nth-child(7) { animation-delay: .42s; }
+    .hex::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: var(--hex-fill);
+      clip-path: inherit;
+    }
+    .hex-content { position: relative; z-index: 1; line-height: 1.05; }
+    .hex small {
+      display: block;
+      margin-bottom: .24rem;
+      color: #b9cbc6;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: clamp(.5rem, .75vw, .65rem);
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .hex strong { display: block; color: #fff; font-size: clamp(.73rem, 1.2vw, 1rem); }
+    .hex em { display: block; margin-top: .2rem; color: #c6d6d2; font-size: clamp(.56rem, .82vw, .7rem); font-style: normal; }
+    .hex--center {
+      --hex-border: #fffdf8;
+      --hex-fill: #f4f0e7;
+      z-index: 2;
+      animation: hex-arrive .55s .42s cubic-bezier(.2,.8,.2,1) both, talent-pulse 5.5s 1.4s ease-in-out infinite;
+    }
+    .hex--center small, .hex--center em { color: #667572; }
+    .hex--center strong { color: #173a39; font-size: clamp(.9rem, 1.45vw, 1.18rem); }
+    .hex--control { --hex-border: var(--gold); }
+    .hex--relation { --hex-border: var(--coral); }
+    .hex--execution { --hex-border: #9fc2b8; }
+    .panel-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1rem;
+      margin-top: .3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.16);
+      color: #c6d6d2;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .panel-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+    .panel-legend i { width: 8px; height: 8px; background: var(--gold); }
+    .panel-legend span:nth-child(2) i { background: var(--coral); }
+    .panel-legend span:nth-child(3) i { background: #9fc2b8; }
+    .panel-caption { margin: .75rem 0 0; color: #b9cbc6; font-size: .78rem; line-height: 1.45; }
+
+    .section { padding: clamp(2.8rem, 4vw, 3.35rem) 0; }
+    .section-head { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: .9rem 2rem; align-items: end; margin-bottom: 1.15rem; }
+    .section-head h2 { margin: 0; max-width: none; font-size: clamp(2rem, 3.4vw, 3.05rem); line-height: 1.02; letter-spacing: -.045em; }
+    .section-head p { margin: 0; color: var(--ink-soft); max-width: 62ch; }
+    .metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: 0 16px 36px rgba(18,62,59,.07); }
+    .metric-cell { min-height: 136px; padding: 1.05rem 1.15rem; display: flex; flex-direction: column; justify-content: space-between; animation: lift-in .48s cubic-bezier(.2,.8,.2,1) both; }
+    .metric-cell:nth-child(2) { animation-delay: .06s; }
+    .metric-cell:nth-child(3) { animation-delay: .12s; }
+    .metric-cell:nth-child(4) { animation-delay: .18s; }
+    .metric-cell:nth-child(2) { background: var(--gold); color: #173a39; }
+    .metric-cell:nth-child(3) { background: var(--coral); color: #fff; }
+    .metric-cell strong { display: block; font-family: Bahnschrift, Arial, sans-serif; font-size: clamp(2.4rem, 4vw, 3.35rem); line-height: .9; letter-spacing: -.05em; }
+    .metric-cell small { display: block; margin-top: .65rem; font-family: Consolas, monospace; font-size: .67rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .metric-cell p { margin: .65rem 0 0; color: inherit; font-size: .85rem; line-height: 1.4; }
+    .metric-cell--timeline strong { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+    .timeline-dots { display: grid; grid-template-columns: repeat(3, 1fr); margin: .75rem 0 .45rem; }
+    .timeline-dots span { position: relative; padding-top: 1rem; text-align: center; font-family: Consolas, monospace; font-size: .61rem; color: var(--ink-soft); }
+    .timeline-dots span::before { content: ""; position: absolute; left: 50%; top: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--deep); transform: translateX(-50%); }
+    .timeline-dots span:last-child::before { background: var(--coral); }
+    .metrics-note { margin: .65rem 0 0; color: var(--ink-soft); font-size: .82rem; }
+
+    .trajectory { background: var(--deep); color: var(--white); }
+    .trajectory .section-head p { color: #c5d5d1; }
+    .timeline { display: grid; gap: .8rem; }
+    .job {
+      display: grid;
+      grid-template-columns: minmax(210px, .72fr) minmax(0, 1.6fr);
+      gap: 1.5rem;
+      padding: clamp(1.15rem, 1.8vw, 1.45rem);
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.045);
+      transition: border-color .24s ease, background .24s ease, transform .24s ease, box-shadow .24s ease;
+    }
+    .job time { color: var(--gold); font-size: .79rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .job h3 { margin: .4rem 0 .2rem; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.05; letter-spacing: -.03em; }
+    .company { margin: 0; color: #b9cbc7; font-weight: 750; }
+    .role-list { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+    .role-list span { padding: .25rem .55rem; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-size: .8rem; }
+    .job ul { margin: 0; padding-left: 1.2rem; }
+    .job li + li { margin-top: .38rem; }
+    .job li::marker { color: var(--gold); }
+    .level-box { grid-column: 2; padding: 1rem 1.1rem; border-left: 4px solid var(--coral); border-radius: 0 16px 16px 0; background: rgba(255,255,255,.07); }
+    .level-box h4 { margin: 0 0 .62rem; color: var(--gold); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+    .level-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem 1rem; }
+    .level-grid p { margin: 0; color: #d7e2df; font-size: .9rem; }
+    .level-grid strong { display: block; color: var(--white); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .capability { min-height: 220px; padding: 1.3rem; border: 1px solid var(--line); border-top: 5px solid var(--deep); border-radius: 0 0 22px 22px; background: var(--surface); box-shadow: 0 12px 28px rgba(18,62,59,.045); transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
+    .capability:nth-child(2) { border-top-color: var(--coral); }
+    .capability:nth-child(3) { border-top-color: var(--gold); }
+    .capability .num { color: var(--coral); font-weight: 900; letter-spacing: .09em; font-size: .8rem; }
+    .capability h3 { margin: .72rem 0 .5rem; font-size: 1.48rem; line-height: 1.1; }
+    .capability p { color: var(--ink-soft); }
+    .capacity-proof { margin: .72rem 0 0; font-size: .83rem; }
+
+    .tools-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .training-card { min-height: 310px; padding: clamp(1.45rem, 3vw, 2.15rem); border-radius: var(--radius); background: linear-gradient(145deg, #dc5a42, var(--coral)); color: #fff; display: flex; flex-direction: column; justify-content: center; gap: 1.15rem; box-shadow: 0 16px 34px rgba(217,87,64,.16); transition: transform .24s ease, box-shadow .24s ease; }
+    .training-card h3 { margin: 0 0 1.3rem; color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.05; }
+    .training-card ol { margin: 0; padding-left: 1.2rem; }
+    .training-card li + li { margin-top: .5rem; }
+    .tools-card { padding: clamp(1.45rem, 3vw, 2.15rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 16px 34px rgba(18,62,59,.055); transition: transform .24s ease, box-shadow .24s ease; }
+    .tools-card h3 { margin-top: 0; font-size: 1.45rem; }
+    .tools-card > p { color: var(--ink-soft); }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.05rem; }
+    .chips span { padding: .48rem .68rem; border: 1px solid transparent; border-radius: 10px; background: var(--paper); font-weight: 780; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+    .market-box { margin-top: 1.05rem; padding: .9rem; border: 1px dashed var(--coral); border-radius: 14px; background: color-mix(in srgb, var(--coral) 3%, transparent); }
+    .market-box h4 { margin: 0 0 .4rem; }
+    .market-box p { margin: 0; color: var(--ink-soft); }
+
+    .next-step { width: min(100% - 2rem, var(--max)); margin: 0 auto 2rem; padding: clamp(1.6rem, 3.1vw, 2.45rem); border: 1px solid rgba(255,255,255,.08); border-radius: 26px; background: linear-gradient(135deg, var(--deep-2), var(--deep) 62%); color: #fff; box-shadow: 0 18px 40px rgba(18,62,59,.14); transition: transform .24s ease, box-shadow .24s ease; }
+    .next-step h2 { max-width: 12ch; margin: 0 0 .8rem; color: #fff; font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.03; letter-spacing: -.04em; }
+    .next-step p:last-child { margin: 0; color: #ccdad6; }
+    footer { border-top: 1px solid var(--line); padding: 1.2rem 0 1.8rem; color: var(--ink-soft); }
+    footer .shell { display: flex; justify-content: space-between; gap: 1rem; }
+
+    .hero-grid > div { animation: lift-in .62s cubic-bezier(.2,.8,.2,1) both; }
+    .proposal-card { animation: lift-in .68s .08s cubic-bezier(.2,.8,.2,1) both; }
+
+    @keyframes lift-in {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hex-arrive {
+      from { opacity: 0; transform: translate(-50%, -46%) scale(.94); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    @keyframes talent-pulse {
+      0%, 100% { filter: drop-shadow(0 0 0 rgba(228,184,78,0)); }
+      50% { filter: drop-shadow(0 0 10px rgba(228,184,78,.22)); }
+    }
+    @keyframes panel-sheen {
+      0%, 72%, 100% { transform: translateX(-110%); }
+      86% { transform: translateX(110%); }
+    }
+
+    @media (hover: hover) {
+      .hex:hover { transform: translate(-50%, -50%) scale(1.035); filter: brightness(1.08) drop-shadow(0 8px 14px rgba(0,0,0,.16)); z-index: 4; }
+      .job:hover { border-color: rgba(228,184,78,.42); background: rgba(255,255,255,.065); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.11); }
+      .capability:hover, .training-card:hover, .tools-card:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(18,62,59,.12); }
+      .chips span:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--coral) 45%, transparent); background: var(--surface); }
+      .next-step:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(18,62,59,.18); }
+    }
+
+    @media (max-width: 900px) {
+      .main-nav { display: none; }
+      .hero-grid, .section-head, .tools-layout { grid-template-columns: 1fr; }
+      .hero { padding-top: 2.55rem; }
+      .section-head { align-items: start; }
+      .section-head h2 { max-width: none; }
+      .job { grid-template-columns: 1fr; }
+      .level-box { grid-column: 1; }
+      .capability-grid { grid-template-columns: 1fr; }
+      .capability { min-height: 0; }
+      .metric-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .shell { width: min(100% - 1.1rem, var(--max)); }
+      .brand > span:last-child { display: inline; font-size: .9rem; }
+      .header-inner { min-height: 64px; }
+      .theme-toggle { padding: 2px; }
+      .hero { padding: 1.9rem 0 2.35rem; }
+      h1 { font-size: clamp(2.7rem, 16vw, 4.25rem); }
+      .proposal-card { min-height: 402px; border-radius: 24px; padding: 1rem; }
+      .panel-kicker { font-size: .6rem; }
+      .honeycomb { width: min(100%, 330px); margin-top: .35rem; }
+      .hex { width: 37%; padding: .7rem .35rem; }
+      .hex small { font-size: .46rem; }
+      .hex strong { font-size: .7rem; }
+      .hex em { font-size: .5rem; }
+      .hex--center strong { font-size: .84rem; }
+      .panel-legend { gap: .4rem .7rem; font-size: .57rem; }
+      .level-grid { grid-template-columns: 1fr; }
+      .metric-strip { grid-template-columns: 1fr; border-radius: 16px; }
+      .section { padding: 2.35rem 0; }
+      .metric-cell { min-height: 112px; }
+      .job { padding: 1.05rem; gap: 1rem; }
+      .level-box { padding: .9rem; }
+      .training-card { min-height: 0; }
+      .tools-layout { margin-top: 1.2rem; }
+      .next-step { margin-bottom: 1.4rem; padding: 1.5rem; }
+      footer .shell { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+
+    @media print {
+      :root { --paper: #fff; --surface: #fff; --ink: #132e2c; --ink-soft: #3e5552; --deep: #123b39; --line: #b8b8b8; }
+      body { font-size: 10.5pt; }
+      .site-header, .skip-link, .theme-toggle { display: none !important; }
+      .shell { width: 100%; }
+      .hero, .section { padding: 1.5rem 0; }
+      .hero-grid, .section-head, .tools-layout { grid-template-columns: 1fr; }
+      .proposal-card, .trajectory, .training-card, .next-step { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .job { break-inside: avoid; }
+      .trajectory { padding-inline: 1rem; }
+      .theme-toggle { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio del perfil de Ruth Leytes">
+        <span class="monogram" aria-hidden="true">RL</span>
+        <span>Ruth Leytes</span>
+      </a>
+      <div class="nav-wrap">
+        <nav class="main-nav" aria-label="Navegación principal">
+          <a href="#mapa">Mapa</a>
+          <a href="#trayectoria">Trayectoria</a>
+          <a href="#capacidades">Capacidades</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar modo oscuro">
+          <span class="toggle-knob" aria-hidden="true">
+</span>
+<span class="theme-label visually-hidden">Oscuro</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="nombre">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Trayectoria profesional</p>
+          <h1 id="nombre">Ruth Leytes</h1>
+          <p class="role-line">Recruiter IT · Talent Sourcing internacional · Selección End-to-End</p>
+          <p class="hero-copy">Especialista en adquisición de talento tecnológico con experiencia en sourcing estratégico, entrevistas por competencias y gestión integral de procesos para clientes internacionales. Conecta búsqueda, evaluación, comunicación y seguimiento para construir pipelines técnicos claros y ofrecer una experiencia cuidada a cada candidatura.</p>
+          <p class="contact-note">Uruguay · experiencia remota con Estados Unidos, España y LATAM · inglés B1 con B2 en curso</p>
+        </div>
+        <aside class="proposal-card" aria-label="Panal del sistema profesional de Ruth: el talento IT conecta sourcing, pipeline, entrevistas, comunicación en inglés, onboarding y coordinación internacional">
+          <div class="panel-kicker">
+<span>Sistema profesional · recruiting</span>
+<span>Sourcing / evaluación</span>
+</div>
+          <div class="honeycomb" role="img" aria-label="Talento IT en el centro, conectado con Boolean Search, pipeline, entrevistas, inglés, onboarding y stakeholders">
+            <div class="hex hex--control" style="--x:50%;--y:17%" aria-hidden="true">
+<span class="hex-content">
+<small>Sourcing</small>
+<strong>Boolean</strong>
+<em>búsqueda dirigida</em>
+</span>
+</div>
+            <div class="hex hex--relation" style="--x:76%;--y:34%" aria-hidden="true">
+<span class="hex-content">
+<small>Control</small>
+<strong>Pipeline</strong>
+<em>seguimiento</em>
+</span>
+</div>
+            <div class="hex hex--relation" style="--x:76%;--y:66%" aria-hidden="true">
+<span class="hex-content">
+<small>Evaluación</small>
+<strong>Entrevista</strong>
+<em>competencias</em>
+</span>
+</div>
+            <div class="hex hex--execution" style="--x:50%;--y:83%" aria-hidden="true">
+<span class="hex-content">
+<small>Comunicación</small>
+<strong>Inglés</strong>
+<em>preselección</em>
+</span>
+</div>
+            <div class="hex hex--execution" style="--x:24%;--y:66%" aria-hidden="true">
+<span class="hex-content">
+<small>Personas</small>
+<strong>Onboarding</strong>
+<em>capacitación</em>
+</span>
+</div>
+            <div class="hex hex--control" style="--x:24%;--y:34%" aria-hidden="true">
+<span class="hex-content">
+<small>Internacional</small>
+<strong>Stakeholders</strong>
+<em>alineación</em>
+</span>
+</div>
+            <div class="hex hex--center" style="--x:50%;--y:50%" aria-hidden="true">
+<span class="hex-content">
+<small>Núcleo</small>
+<strong>Talento IT</strong>
+<em>encaje + experiencia</em>
+</span>
+</div>
+          </div>
+          <div class="panel-legend" aria-hidden="true">
+<span>
+<i>
+</i>Sourcing</span>
+<span>
+<i>
+</i>Evaluación</span>
+<span>
+<i>
+</i>Coordinación</span>
+</div>
+          <p class="panel-caption">El recruiting conecta búsqueda dirigida y evaluación técnica con el seguimiento del pipeline, la comunicación internacional y la experiencia de cada candidatura.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="mapa" aria-labelledby="mapa-title">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="mapa-title">Mapa de experiencia</h2>
+          <p>Indicadores extraídos del documento fuente. Representan hechos, equipos y resultados verificables; no son estimaciones de impacto.</p>
+        </div>
+        <div class="metric-strip" aria-label="Evidencias verificables del recorrido profesional">
+          <article class="metric-cell">
+<div>
+<strong>4</strong>
+<small>Experiencias IT</small>
+</div>
+<p>Sourcing, selección End-to-End, liderazgo y coordinación internacional.</p>
+</article>
+          <article class="metric-cell">
+<div>
+<strong>3–4</strong>
+<small>Contrataciones / mes</small>
+</div>
+<p>Resultado declarado en CJ Recruitment para posiciones tecnológicas.</p>
+</article>
+          <article class="metric-cell">
+<div>
+<strong>30</strong>
+<small>Pasantes coordinados</small>
+</div>
+<p>Liderazgo remoto en Gaotek; además trabajó en un equipo de 15 recruiters en CJ.</p>
+</article>
+          <article class="metric-cell metric-cell--timeline">
+            <strong>Línea temporal</strong>
+            <div class="timeline-dots" role="img" aria-label="Hitos del recorrido en 2023, 2024 y 2026">
+<span>2023</span>
+<span>2024</span>
+<span>2026</span>
+</div>
+            <p>Del sourcing al ciclo End-to-End y la búsqueda internacional especializada.</p>
+          </article>
+        </div>
+        <p class="metrics-note">Cifras tomadas del CV aportado y conservadas sin extrapolaciones ni porcentajes añadidos.</p>
+      </div>
+    </section>
+
+    <section class="section trajectory" id="trayectoria" aria-labelledby="trayectoria-title">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="trayectoria-title">Trayectoria</h2>
+          <p>La trayectoria presenta acciones y resultados de Ruth respaldados por el documento fuente. Cada bloque los separa con claridad de la referencia profesional actual del rol.</p>
+        </div>
+        <div class="timeline">
+          <article class="job">
+            <div>
+              <time datetime="2026-02/2026-08">Feb. 2026 — Ago. 2026</time>
+              <h3>IT Sourcer</h3>
+              <p class="company">Strider · Remoto · Estados Unidos</p>
+            </div>
+            <ul>
+              <li>Buscó profesionales de tecnología para procesos de selección internacionales mediante estrategias de sourcing dirigidas.</li>
+              <li>Construyó búsquedas específicas con LinkedIn Recruiter, Boolean Search y otros canales de captación.</li>
+              <li>Creó y mantuvo pipelines de candidaturas para Software Engineering, Data, Cloud &amp; DevOps, QA/Testing y Ciberseguridad.</li>
+              <li>Preseleccionó perfiles según experiencia técnica y nivel de comunicación en inglés.</li>
+              <li>Colaboró de forma remota con equipos y stakeholders internacionales durante el proceso de selección.</li>
+            </ul>
+            <div class="level-box">
+              <h4>Estándar profesional del rol · referencia actual</h4>
+              <div class="level-grid">
+                <p>
+<strong>Herramientas</strong>LinkedIn Recruiter · Boolean Search · ATS · talent pipeline</p>
+                <p>
+<strong>IA aplicada</strong>ChatGPT para proponer variantes booleanas y estructurar notas de preselección, con revisión del encaje y sin exponer datos sensibles</p>
+                <p>
+<strong>Método</strong>Intake del perfil · mapa de talento · calibración · seguimiento del pipeline</p>
+                <p>
+<strong>Indicadores</strong>Perfiles cualificados · respuesta · avance por etapa · cobertura de pipeline</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="job">
+            <div>
+              <time datetime="2024-02/2026-01">Feb. 2024 — Ene. 2026</time>
+              <h3>IT Recruiter</h3>
+              <p class="company">CJ Recruitment · Remoto · Argentina</p>
+            </div>
+            <ul>
+              <li>Gestionó procesos de selección IT End-to-End, desde la búsqueda hasta el seguimiento de candidaturas.</li>
+              <li>Localizó perfiles técnicos con LinkedIn Recruiter, Boolean Search, publicaciones de vacantes y sourcing dirigido.</li>
+              <li>Realizó entrevistas por competencias y evaluó la experiencia técnica y el nivel de inglés conversacional.</li>
+              <li>Coordinó los procesos con clientes de Estados Unidos y España y acompañó a cada candidatura durante su avance.</li>
+              <li>Alcanzó entre 3 y 4 contrataciones mensuales para posiciones IT.</li>
+              <li>Formó parte de un equipo internacional de 15 recruiters.</li>
+            </ul>
+            <div class="level-box">
+              <h4>Estándar profesional del rol · referencia actual</h4>
+              <div class="level-grid">
+                <p>
+<strong>Herramientas</strong>LinkedIn Recruiter · Boolean Search · ATS · plataformas de empleo</p>
+                <p>
+<strong>IA aplicada</strong>ChatGPT para preparar borradores de vacantes y guías de entrevista; contraste humano de requisitos y uso de información anonimizada</p>
+                <p>
+<strong>Método</strong>Selección End-to-End · entrevista por competencias · coordinación con cliente · candidate care</p>
+                <p>
+<strong>Indicadores</strong>3–4 contrataciones/mes · tiempo de cobertura · conversión por etapa · aceptación</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="job">
+            <div>
+              <time datetime="2023-07/2024-04">Jul. 2023 — Abr. 2024</time>
+              <h3>Assistant Team Lead &amp; IT Recruiter</h3>
+              <p class="company">Gaotek Inc · Remoto · Estados Unidos</p>
+            </div>
+            <ul>
+              <li>Reclutó y seleccionó profesionales de tecnología para un entorno remoto internacional.</li>
+              <li>Coordinó el onboarding y la capacitación de nuevas incorporaciones.</li>
+              <li>Monitoreó desempeño y asistencia para sostener el seguimiento del equipo.</li>
+              <li>Lideró un equipo remoto de 30 pasantes, alineando procesos y objetivos.</li>
+              <li>Implementó estrategias de atracción y retención de talento.</li>
+            </ul>
+            <div class="level-box">
+              <h4>Estándar profesional del rol · referencia actual</h4>
+              <div class="level-grid">
+                <p>
+<strong>Herramientas</strong>ATS · tablero de onboarding · seguimiento de asistencia · materiales de capacitación</p>
+                <p>
+<strong>IA aplicable</strong>Guías de onboarding y síntesis de seguimiento con revisión de la responsable y protección de datos personales</p>
+                <p>
+<strong>Método</strong>Onboarding estructurado · seguimiento periódico · feedback · alineación de objetivos</p>
+                <p>
+<strong>Indicadores</strong>30 pasantes · asistencia · avance de capacitación · permanencia</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="job">
+            <div>
+              <time datetime="2023-09/2024-02">Sep. 2023 — Feb. 2024</time>
+              <h3>Talent Sourcer</h3>
+              <p class="company">Recruitingskull · Remoto · Argentina</p>
+            </div>
+            <ul>
+              <li>Buscó candidaturas IT mediante LinkedIn Recruiter y Boolean Search.</li>
+              <li>Preseleccionó perfiles de acuerdo con los criterios técnicos de las búsquedas.</li>
+              <li>Organizó y mantuvo pipelines para dar continuidad al proceso de sourcing.</li>
+              <li>Desarrolló networking dentro del ecosistema tecnológico para ampliar las fuentes de talento.</li>
+            </ul>
+            <div class="level-box">
+              <h4>Estándar profesional del rol · referencia actual</h4>
+              <div class="level-grid">
+                <p>
+<strong>Herramientas</strong>LinkedIn Recruiter · Boolean Search · pipeline de talento · networking</p>
+                <p>
+<strong>IA aplicable</strong>Expansión de cadenas booleanas y normalización de notas, siempre contrastadas con el perfil requerido</p>
+                <p>
+<strong>Método</strong>Mapa de búsqueda · contacto dirigido · preselección · actualización de pipeline</p>
+                <p>
+<strong>Indicadores</strong>Candidaturas identificadas · respuesta · perfiles preseleccionados · pipeline activo</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="capacidades" aria-labelledby="capacidades-title">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="capacidades-title">Capacidades</h2>
+          <p>Tres núcleos que resumen la propuesta profesional demostrable de Ruth en reclutamiento tecnológico.</p>
+        </div>
+        <div class="capability-grid">
+          <article class="capability">
+<span class="num">NÚCLEO 01</span>
+<h3>Sourcing técnico</h3>
+<p>LinkedIn Recruiter, Boolean Search, networking, segmentación de perfiles y construcción de pipelines para distintas áreas de tecnología.</p>
+<p class="capacity-proof">Declarado en Strider, CJ Recruitment y Recruitingskull.</p>
+</article>
+          <article class="capability">
+<span class="num">NÚCLEO 02</span>
+<h3>Selección End-to-End</h3>
+<p>Publicación, preselección, entrevistas por competencias, evaluación de inglés, coordinación con clientes y seguimiento de candidaturas.</p>
+<p class="capacity-proof">Declarado en CJ Recruitment y reforzado en Strider.</p>
+</article>
+          <article class="capability">
+<span class="num">NÚCLEO 03</span>
+<h3>Coordinación internacional</h3>
+<p>Trabajo remoto multicultural, alineación con stakeholders, onboarding, capacitación y liderazgo de equipos distribuidos.</p>
+<p class="capacity-proof">Declarado en Strider, CJ Recruitment y Gaotek.</p>
+</article>
+        </div>
+        <div class="tools-layout" id="formacion">
+          <article class="training-card">
+            <div>
+<p class="eyebrow" style="color:#fff">Formación</p>
+<h3>Recursos Humanos y Recruiting IT</h3>
+</div>
+            <ol>
+              <li>
+<strong>En curso</strong> · Metodologías Scrum y Agile · G-Talent</li>
+              <li>
+<strong>2023</strong> · Curso de Reclutamiento IT · Recruitingskull</li>
+              <li>
+<strong>2022</strong> · Analista de Recursos Humanos · Instituto Bios</li>
+            </ol>
+          </article>
+          <article class="tools-card">
+            <h3>Herramientas confirmadas</h3>
+            <p>Conocimientos incluidos expresamente en el documento fuente.</p>
+            <div class="chips" aria-label="Herramientas confirmadas">
+              <span>LinkedIn Recruiter</span>
+<span>Boolean Search</span>
+<span>ATS</span>
+<span>Plataformas de empleo</span>
+<span>ChatGPT aplicado al recruiting</span>
+<span>Entrevistas por competencias</span>
+<span>Talent pipeline</span>
+<span>Scrum y Agile · en formación</span>
+<span>Inglés B1 · B2 en curso</span>
+            </div>
+            <div class="market-box">
+              <h4>Ecosistema recomendado para el siguiente nivel</h4>
+              <p>Talent CRM, analítica del funnel, scorecards estructuradas y automatización responsable del ATS reforzarían la trazabilidad y la toma de decisiones sin atribuir herramientas no confirmadas.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-step" aria-labelledby="disponibilidad-title">
+      <p class="eyebrow" style="color:#f4d889">Siguiente conversación</p>
+      <h2 id="disponibilidad-title">Hablemos de talento IT.</h2>
+      <p>Uruguay · experiencia remota internacional · inglés B1 con B2 en curso</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+<span>Ruth Leytes</span>
+<span>Perfil profesional · septiembre de 2026</span>
+</div>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const label = document.querySelector('.theme-label');
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      const stored = localStorage.getItem('cv-theme');
+      const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      const applyTheme = (theme) => {
+        const dark = theme === 'dark';
+        root.dataset.theme = theme;
+        button.setAttribute('aria-pressed', String(dark));
+        button.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
+        label.textContent = dark ? 'Claro' : 'Oscuro';
+        metaTheme.setAttribute('content', dark ? '#0f2625' : '#f4f0e7');
+      };
+
+      applyTheme(stored || (preferredDark ? 'dark' : 'light'));
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('cv-theme', next);
+        applyTheme(next);
+      });
+    })();
+  </script>
+</body>
+</html>
